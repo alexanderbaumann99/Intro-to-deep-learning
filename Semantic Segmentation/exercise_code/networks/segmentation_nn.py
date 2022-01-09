@@ -2,7 +2,7 @@
 import torch
 from torch import functional
 import torch.nn as nn
-import pytorch_lightning as pl
+#import pytorch_lightning as pl
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 import torchvision.models as models
@@ -11,7 +11,7 @@ import math
 
 
 
-class SegmentationNN(pl.LightningModule):
+class SegmentationNN(nn.Module):
 
     def __init__(self, num_classes=23, hparams=None):
         super().__init__()
@@ -120,7 +120,7 @@ class SegmentationNN(pl.LightningModule):
         torch.save(self, path)
 
         
-class DummySegmentationModel(pl.LightningModule):
+class DummySegmentationModel(nn.Module):
 
     def __init__(self, target_image):
         super().__init__()
